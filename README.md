@@ -1,5 +1,5 @@
 # Flicks-Week1
-This is the first weeks work
+This is the first weeks work.
 
 # Project 1 - *TONY*
 
