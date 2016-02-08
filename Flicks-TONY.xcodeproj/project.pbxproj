@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C681542C82C537887A913DA /* Pods_Flicks_TONY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDCAA3E72C84E75EA964B23C /* Pods_Flicks_TONY.framework */; };
 		775E851B1C6303230037CD5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E851A1C6303230037CD5F /* AppDelegate.swift */; };
 		775E85201C6303230037CD5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775E851E1C6303230037CD5F /* Main.storyboard */; };
 		775E85221C6303230037CD5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775E85211C6303230037CD5F /* Assets.xcassets */; };
@@ -24,6 +25,9 @@
 		775E85261C6303230037CD5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775E852C1C6303BA0037CD5F /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		775E852F1C63151E0037CD5F /* Movie Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie Cell.swift"; sourceTree = "<group>"; };
+		853FF7002075991C1229D4AA /* Pods-Flicks-TONY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks-TONY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY.debug.xcconfig"; sourceTree = "<group>"; };
+		A50E3015E92B09AC77A0CECA /* Pods-Flicks-TONY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks-TONY.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY.release.xcconfig"; sourceTree = "<group>"; };
+		BDCAA3E72C84E75EA964B23C /* Pods_Flicks_TONY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flicks_TONY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C681542C82C537887A913DA /* Pods_Flicks_TONY.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				775E85191C6303230037CD5F /* Flicks-TONY */,
 				775E85181C6303230037CD5F /* Products */,
+				900D8DEB5BAFE348C25DAF7D /* Pods */,
+				FCB6B36DA48CA2DCA5F3A779 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +90,23 @@
 			name = "view controllers";
 			sourceTree = "<group>";
 		};
+		900D8DEB5BAFE348C25DAF7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				853FF7002075991C1229D4AA /* Pods-Flicks-TONY.debug.xcconfig */,
+				A50E3015E92B09AC77A0CECA /* Pods-Flicks-TONY.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FCB6B36DA48CA2DCA5F3A779 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDCAA3E72C84E75EA964B23C /* Pods_Flicks_TONY.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -90,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 775E85291C6303230037CD5F /* Build configuration list for PBXNativeTarget "Flicks-TONY" */;
 			buildPhases = (
+				7112F2DA6E05D26BA65F9BB9 /* Check Pods Manifest.lock */,
 				775E85131C6303230037CD5F /* Sources */,
 				775E85141C6303230037CD5F /* Frameworks */,
 				775E85151C6303230037CD5F /* Resources */,
+				DCE6BC2E9543DF2E20F9BE30 /* Embed Pods Frameworks */,
+				F2209A72AC088A8CFC021D72 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +176,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7112F2DA6E05D26BA65F9BB9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DCE6BC2E9543DF2E20F9BE30 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2209A72AC088A8CFC021D72 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		775E85131C6303230037CD5F /* Sources */ = {
@@ -266,6 +341,7 @@
 		};
 		775E852A1C6303230037CD5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 853FF7002075991C1229D4AA /* Pods-Flicks-TONY.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Flicks-TONY/Info.plist";
@@ -277,6 +353,7 @@
 		};
 		775E852B1C6303230037CD5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A50E3015E92B09AC77A0CECA /* Pods-Flicks-TONY.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Flicks-TONY/Info.plist";
@@ -305,6 +382,7 @@
 				775E852B1C6303230037CD5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
