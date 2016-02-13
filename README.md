@@ -43,9 +43,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-- Poster images were not complete in the api so my app would crash when it scrolled to this particular cell. However, issu was resolved by using if and else tools.
-- 
+-Describe any challenges encountered while building the app.
+Poster images were not all available in the APINetwork so my app would crash when it scrolled to this particular cell. However, issue was resolved by using if and else tools.
+ 
 ## License
 
     Copyright [2016] [Axel Guzman]
