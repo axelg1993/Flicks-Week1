@@ -14,6 +14,7 @@
 		775E85251C6303230037CD5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775E85231C6303230037CD5F /* LaunchScreen.storyboard */; };
 		775E852D1C6303BA0037CD5F /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E852C1C6303BA0037CD5F /* MoviesViewController.swift */; };
 		775E85301C63151E0037CD5F /* Movie Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775E852F1C63151E0037CD5F /* Movie Cell.swift */; };
+		8CC4C92A3EDFB7EA942E57A3 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 853A07C3D0891065F65A6976 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		775E85261C6303230037CD5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775E852C1C6303BA0037CD5F /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		775E852F1C63151E0037CD5F /* Movie Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Movie Cell.swift"; sourceTree = "<group>"; };
+		853A07C3D0891065F65A6976 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		853FF7002075991C1229D4AA /* Pods-Flicks-TONY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks-TONY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY.debug.xcconfig"; sourceTree = "<group>"; };
 		A50E3015E92B09AC77A0CECA /* Pods-Flicks-TONY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks-TONY.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY.release.xcconfig"; sourceTree = "<group>"; };
 		BDCAA3E72C84E75EA964B23C /* Pods_Flicks_TONY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flicks_TONY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C681542C82C537887A913DA /* Pods_Flicks_TONY.framework in Frameworks */,
+				8CC4C92A3EDFB7EA942E57A3 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				BDCAA3E72C84E75EA964B23C /* Pods_Flicks_TONY.framework */,
+				853A07C3D0891065F65A6976 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -205,7 +209,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flicks-TONY/Pods-Flicks-TONY-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2209A72AC088A8CFC021D72 /* Copy Pods Resources */ = {
