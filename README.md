@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 - [ ] User sees an error message when there's a networking error.
 - [ ] Movies are displayed using a CollectionView instead of a TableView.
 - [ ] User can search for a movie.
-- [ ] All images fade in as they are loading.
+- [x] All images fade in as they are loading.
 - [ ] Customize the UI.
 
 The following **additional** features are implemented:
@@ -30,8 +30,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1. Collection views, and how their eas of use is detrimental.
-2. UISearchbar and it's importance.
+1. Collection views, and how their ease of use is detrimental. 
+2. Efficiency and it's importance specifically because it lags to load in the imageViews.
 
 ## Video Walkthrough 
 
