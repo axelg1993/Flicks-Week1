@@ -22,6 +22,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
+        tableView.reloadData()
+        refreshControl.endRefreshing()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -59,29 +61,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
-        
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate:nil,
-            delegateQueue:NSOperationQueue.mainQueue()
-        )
-        
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (data, response, error) in
+      
                 
                 self.tableView.reloadData()
                 refreshControl.endRefreshing()
-        });
-        task.resume()
-    }
- 
+                
+            }
+            
+            
+   
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -105,16 +94,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
         let imageRequest = NSURLRequest(URL: NSURL(string: baseUrl)!)
-
-     if let posterPath = movie ["poster_path"] as? String{
-        let imageUrl = NSURL(string: baseUrl + posterPath)
-        cell.posterView.setImageWithURL(imageUrl!)
-        
+       // Fades imageviews
         cell.posterView.setImageWithURLRequest(
             imageRequest,
             placeholderImage: nil,
             success: { (imageRequest, imageResponse, image) -> Void in
-        
+                
                 if imageResponse != nil {
                     print("Image was NOT cached, fade in image")
                     cell.posterView.alpha = 0.0
@@ -122,12 +107,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     UIView.animateWithDuration(0.3, animations: { () -> Void in
                         cell.posterView.alpha = 1.0
                     })}
-                 else {
-                print("Image was cached so just update the image")
-                cell.posterView.image = image
+                else {
+                    print("Image was cached so just update the image")
+                    cell.posterView.image = image
                 }},
             
             failure: { (imageRequest, imageResponse, error) -> Void in})
+        // ends here.
+     if let posterPath = movie ["poster_path"] as? String{
+        let imageUrl = NSURL(string: baseUrl + posterPath)
+           cell.posterView.setImageWithURL(imageUrl!)
      }
     
      else {cell.posterView.image = nil}
