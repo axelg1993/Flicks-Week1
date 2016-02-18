@@ -10,28 +10,27 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     var endpoint: String!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-    
+      
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
        
-        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
-       
+        
         networkRequest()
     }
     
@@ -39,16 +38,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
     }
     
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if let movies = movies {
-            return movies.count
-        } else {
-            return 0
-        }
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.magentaColor()
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! Movie_Cell
         let movie = movies![indexPath.row]
@@ -57,15 +49,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
+        cell.selectedBackgroundView = backgroundView
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
-        
+        let imageRequest = NSURLRequest(URL: NSURL(string: baseUrl)!)
+       
         if let posterPath = movie ["poster_path"] as? String{
             let imageUrl = NSURL(string: baseUrl + posterPath)
+            
             cell.posterView.setImageWithURL(imageUrl!)
         }
-       
-        let imageRequest = NSURLRequest(URL: NSURL(string: baseUrl)!)
         
         cell.posterView.setImageWithURLRequest(
             imageRequest,
@@ -91,9 +84,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     
-
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if let movies = movies {
+            return movies.count
+        } else {
+            return 0
+        }
+    }
+    
     func networkRequest(){
-        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -119,13 +118,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             
                             self.refreshControl.endRefreshing()
                             MBProgressHUD.hideHUDForView(self.view, animated: true)
-
             }
                 }
         }
         )
         task.resume()
     }
+   
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
                         // Reload the tableView now that there is new data
@@ -135,7 +134,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 refreshControl.endRefreshing()	
     
     }
-
     
     // MARK: - Navigation
 
@@ -152,6 +150,4 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
-
 }
