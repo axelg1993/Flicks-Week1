@@ -52,18 +52,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         cell.selectedBackgroundView = backgroundView
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
-        let imageRequest = NSURLRequest(URL: NSURL(string: baseUrl)!)
        
         if let posterPath = movie ["poster_path"] as? String{
-            let imageUrl = NSURL(string: baseUrl + posterPath)
+        let imageUrl = NSURL(string: baseUrl + posterPath)
             
-            cell.posterView.setImageWithURL(imageUrl!)
-        }
         
+        let imageRequest = NSURLRequest(URL: imageUrl!)
+
         cell.posterView.setImageWithURLRequest(
             imageRequest,
             placeholderImage: nil,
-            success: { (imageRequest, imageResponse, image) -> Void in
+            success: { (imageRequest: NSURLRequest, imageResponse: NSHTTPURLResponse?, image: UIImage) -> Void in
                 
                 if imageResponse != nil {
                     print("Image was NOT cached, fade in image")
@@ -77,9 +76,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     cell.posterView.image = image
                 }},
             
-            failure: { (imageRequest, imageResponse, error) -> Void in})
-
-        print ("row \(indexPath.row)")
+            failure: { (imageRequest: NSURLRequest, imageResponse: NSHTTPURLResponse?, error: NSError ) -> Void in})
+        }
+     //   print ("row \(indexPath.row)")
         return cell
     }
     
@@ -112,7 +111,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             
                             self.movies = responseDictionary["results"] as?  [NSDictionary]
-                            print("response: \(responseDictionary)")
+                            //print("response: \(responseDictionary)")
                             self.tableView.reloadData()
                             
                             
