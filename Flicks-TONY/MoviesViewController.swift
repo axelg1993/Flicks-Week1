@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     var endpoint: String!
+    var hidden: Bool
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +32,47 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
+        navigationBarController()
         networkRequest()
+    }
+   
+
+    func navigationBarController(){
+       
+        self.navigationItem.title =  "MOVIES TONY"
+        if let navigationBar = navigationController?.navigationBar {
+            
+            navigationBar.setBackgroundImage(UIImage(named: "Tony"), forBarMetrics: .Default)
+            
+            navigationBar.tintColor = UIColor(red: 6, green: 0, blue: 0, alpha: 5)
+            
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+            shadow.shadowOffset = CGSizeMake(1, 1);
+            shadow.shadowBlurRadius = 5;
+            
+            navigationBar.titleTextAttributes = [
+                NSFontAttributeName : UIFont.boldSystemFontOfSize(22),
+                NSForegroundColorAttributeName : UIColor(red: 3, green: 0.15, blue: 0.15, alpha: 0.8),
+                NSShadowAttributeName : shadow
+            ]
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.magentaColor()
+        backgroundView.backgroundColor = UIColor.redColor()
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! Movie_Cell
         let movie = movies![indexPath.row]
         let title = movie ["title"] as! String
         let overview = movie ["overview"] as! String
         
+       
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         cell.selectedBackgroundView = backgroundView
@@ -55,8 +81,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
        
         if let posterPath = movie ["poster_path"] as? String{
         let imageUrl = NSURL(string: baseUrl + posterPath)
-            
-        
         let imageRequest = NSURLRequest(URL: imageUrl!)
 
         cell.posterView.setImageWithURLRequest(
@@ -74,11 +98,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 else {
                     print("Image was cached so just update the image")
                     cell.posterView.image = image
-                }},
+                }
+            },
             
             failure: { (imageRequest: NSURLRequest, imageResponse: NSHTTPURLResponse?, error: NSError ) -> Void in})
-        }
-     //   print ("row \(indexPath.row)")
+       }
+      print ("row \(indexPath.row)")
         return cell
     }
     
@@ -105,15 +130,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         )
         let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
-                
         if let data = dataOrNil {
             if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             
-                            self.movies = responseDictionary["results"] as?  [NSDictionary]
+                            self.movies = responseDictionary["results"] as? [NSDictionary]
                             //print("response: \(responseDictionary)")
                             self.tableView.reloadData()
-                            
                             
                             self.refreshControl.endRefreshing()
                             MBProgressHUD.hideHUDForView(self.view, animated: true)
