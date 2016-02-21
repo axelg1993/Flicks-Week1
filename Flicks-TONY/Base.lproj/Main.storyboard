@@ -17,14 +17,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="3cn-3f-uj1">
-                                    <rect key="frame" x="0.0" y="64" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="150" id="Z3b-et-AWq" customClass="Movie_Cell" customModule="Flicks_TONY" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="136" width="320" height="150"/>
+                                        <rect key="frame" x="0.0" y="92" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3b-et-AWq" id="h1S-6U-srX">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="149.5"/>
@@ -64,7 +59,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movie" id="Wkp-Eo-By1"/>
                     <connections>
-                        <outlet property="searchBar" destination="3cn-3f-uj1" id="rC0-lT-LUl"/>
                         <outlet property="tableView" destination="INv-zs-fCn" id="KBe-SX-fj8"/>
                     </connections>
                 </viewController>
